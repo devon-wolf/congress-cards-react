@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm.js'
+import SearchList from './SearchList.js'
 import { getCongressfolk } from './api-search-utils'
 
 
@@ -25,6 +26,7 @@ export default class SearchPage extends Component {
 					handleChamberChange={e => this.setState({chamber: e.target.value})}
 					handleSearchClick={this.handleSearchClick}
 				/>
+				<SearchList items={this.state.results}/>
 			</main>
 		)
 	}
