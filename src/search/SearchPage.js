@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm.js'
+import { getCongressfolk } from './api-search-utils'
+
 
 export default class SearchPage extends Component {
 	state = {
-		chamber: ''
+		chamber: '',
+		results: []
 	}
 
 	handleSearchClick = async e => {
-		
+		const results = await getCongressfolk(this.state.chamber, this.props.token);
+
+		this.setState({ results });
 	}
 
 	render() {
@@ -18,7 +23,7 @@ export default class SearchPage extends Component {
 				<SearchForm 
 					chamber={this.state.chamber}
 					handleChamberChange={e => this.setState({chamber: e.target.value})}
-					handleSearchClick={e => console.log(this.state)}
+					handleSearchClick={this.handleSearchClick}
 				/>
 			</main>
 		)
