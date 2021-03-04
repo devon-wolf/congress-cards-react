@@ -6,6 +6,10 @@ export default class SearchPage extends Component {
 		chamber: ''
 	}
 
+	handleSearchClick = async e => {
+		
+	}
+
 	render() {
 		// console.log(this.state);
 		return (
@@ -14,6 +18,7 @@ export default class SearchPage extends Component {
 				<SearchForm 
 					chamber={this.state.chamber}
 					handleChamberChange={e => this.setState({chamber: e.target.value})}
+					handleSearchClick={e => console.log(this.state)}
 				/>
 			</main>
 		)
