@@ -12,7 +12,7 @@ export default class AuthForm extends Component {
 		
 		const { email, password } = this.state;
 		const user = await loginOrSignup(email, password);
-		console.log(user);
+		// console.log(user);
 		this.props.handleFormSubmit(user);
 	}
 

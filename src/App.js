@@ -8,7 +8,7 @@ import PrivateRoute from './PrivateRoute.js'
 import LoginPage from './auth/LoginPage.js'
 import HomePage from './home/HomePage.js'
 import SearchPage from './search/SearchPage.js'
-// import CollectionPage from './collection/CollectionPage.js'
+import CollectionPage from './collection/CollectionPage.js'
 import Header from './common/Header.js'
 import Footer from './common/Footer.js'
 import { getToken, storeToken } from './utils/local-storage-utils.js'
@@ -24,6 +24,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <Router>
         <Header />
@@ -51,7 +52,7 @@ export default class App extends Component {
             path="/collection"
             exact
             token={this.state.token}
-            render={(routerProps) => <SearchPage {...routerProps} />}
+            render={(routerProps) => <CollectionPage {...routerProps} />}
           />
         </Switch>
         <Footer />

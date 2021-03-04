@@ -6,11 +6,6 @@ export function storeToken(user) {
 
 export function getToken() {
 	const token = localStorage.getItem(TOKEN);
-	try {
-		const parsedToken = JSON.parse(token);
-		if (parsedToken) return parsedToken;
-	}
-	catch(e) {
-		return '';
-	}
+	if (!token) return '';
+	return token;
 }

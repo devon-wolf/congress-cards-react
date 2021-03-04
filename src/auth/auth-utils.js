@@ -11,11 +11,11 @@ async function getUserAuth(email, password, authRoute) {
 export async function loginOrSignup(email, password) {
 	let response = {};
 	try {
-		console.log('trying to login');
+		// console.log('trying to login');
 		response = await getUserAuth(email, password, 'signin');
 	}
 	catch(e) {
-		console.log('entered CATCH block');
+		// console.log('entered CATCH block');
 		response = await getUserAuth(email, password, 'signup');
 	}
 	return response;
