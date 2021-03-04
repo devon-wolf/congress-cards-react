@@ -7,5 +7,6 @@
 }
 
 .logout {
+	cursor: pointer;
 	background-color: lightgray;
 }

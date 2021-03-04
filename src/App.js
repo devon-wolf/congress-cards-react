@@ -23,11 +23,18 @@ export default class App extends Component {
     this.setState({token: user.token})
   }
 
+  handleLogoutClick = e => {
+    localStorage.clear();
+    this.setState({token: ''});
+  }
+
   render() {
     console.log(this.state);
     return (
       <Router>
-        <Header />
+        <Header 
+        handleLogoutClick={this.handleLogoutClick}
+        />
         <Switch>
           <Route
             path="/"

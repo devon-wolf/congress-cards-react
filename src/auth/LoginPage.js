@@ -6,8 +6,9 @@ export default class LoginPage extends Component {
 		return (
 			<main>
 				<h1>Login</h1>
-				<h3>(or sign up)</h3>
-				<AuthForm handleFormSubmit={this.props.handleFormSubmit}/>
+				<p><em>if you don't have an account, one will be created for you automatically</em></p>
+				<AuthForm 
+				handleFormSubmit={this.props.handleFormSubmit}/>
 			</main>
 		)
 	}
