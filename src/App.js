@@ -46,7 +46,7 @@ export default class App extends Component {
             exact
             render={(routerProps) => 
             <LoginPage 
-            handleFormSubmit = {this.handleUserChange}
+            handleUserChange = {this.handleUserChange}
             {...routerProps} />}
           />
           <PrivateRoute 
