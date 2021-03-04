@@ -8,13 +8,19 @@ import PrivateRoute from './PrivateRoute.js'
 import LoginPage from './auth/LoginPage.js'
 import HomePage from './home/HomePage.js'
 import SearchPage from './search/SearchPage.js'
-import CollectionPage from './collection/CollectionPage.js'
+// import CollectionPage from './collection/CollectionPage.js'
 import Header from './common/Header.js'
 import Footer from './common/Footer.js'
+import { getToken, storeToken } from './utils/local-storage-utils.js'
 
 export default class App extends Component {
   state = {
-    token: ''
+    token: getToken()
+  }
+
+  handleUserChange = (user) => {
+    storeToken(user);
+    this.setState({token: user.token})
   }
 
   render() {
@@ -30,7 +36,10 @@ export default class App extends Component {
           <Route 
             path="/login"
             exact
-            render={(routerProps) => <LoginPage {...routerProps} />}
+            render={(routerProps) => 
+            <LoginPage 
+            handleFormSubmit = {this.handleUserChange}
+            {...routerProps} />}
           />
           <PrivateRoute 
             path="/search"
@@ -45,6 +54,7 @@ export default class App extends Component {
             render={(routerProps) => <SearchPage {...routerProps} />}
           />
         </Switch>
+        <Footer />
       </Router>
     )
   }
