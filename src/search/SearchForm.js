@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import style from './Search.module.css'
 
 export default class SearchForm extends Component {
 	

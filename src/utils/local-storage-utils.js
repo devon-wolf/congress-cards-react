@@ -7,5 +7,5 @@ export function storeToken(user) {
 export function getToken() {
 	const token = localStorage.getItem(TOKEN);
 	if (!token) return '';
-	return token;
+	return JSON.parse(token);
 }

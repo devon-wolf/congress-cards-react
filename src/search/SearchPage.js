@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchForm from './SearchForm.js'
 import SearchList from './SearchList.js'
 import { getCongressfolk } from './api-search-utils'
+import style from './Search.module.css'
 
 
 export default class SearchPage extends Component {
