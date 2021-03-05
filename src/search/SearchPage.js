@@ -18,7 +18,7 @@ export default class SearchPage extends Component {
 	}
 
 	render() {
-		console.log(this.state);
+		
 		return (
 			<main>
 				<h1>SEARCH</h1>

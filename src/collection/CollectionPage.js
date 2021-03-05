@@ -20,22 +20,21 @@ export default class CollectionPage extends Component {
 	render() {
 		return (
 			<main>
-				<h1>COLLECTION</h1>
+				<h1>My Congressional Caucus</h1>
 				<ul>
 					{this.state.collection.map(item =>
-						<>
 						<li 
-						key={item.db_id + item.party}
-						>
+						key={item.db_id + item.party}>
+							
 							{item.name}
-						</li>
 
-						<button 
-						key={item.id + item.party}
-						onClick={() => this.handleDeleteClick(item)}
-						>Remove?
-						</button>
-						</>
+							<button 
+							key={item.id + item.party}
+							onClick={() => this.handleDeleteClick(item)}>
+								Remove?
+							</button>
+
+						</li>
 					)}
 				</ul>
 			</main>

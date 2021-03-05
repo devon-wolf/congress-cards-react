@@ -8,9 +8,15 @@ export default class SearchItem extends Component {
 				<h4>{this.props.name}</h4>
 				<p>{this.props.state}</p>
 				<p>{this.props.party}</p>
-				<button onClick={this.props.handleCollectClick}>
-					Collect
-				</button>
+				
+				{
+					this.props.collected
+					? <p><em>collected</em></p>
+					: <button onClick={this.props.handleCollectClick}>
+						Collect
+					</button>
+				}
+				
 			</li>
 		)
 	}

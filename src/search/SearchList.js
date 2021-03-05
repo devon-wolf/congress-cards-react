@@ -19,8 +19,15 @@ export default class SearchList extends Component {
 		this.setState({ collection });
 	}
 
+	checkCollection = (item) => {
+		const collected = this.state.collection.some(i => {
+			return i.db_id === item.id;
+		});
+		return collected;
+	}
+
 	render() {
-		console.log(this.state);
+		console.log(this.state.collection);
 		return (
 			<ul className={style.results}>
 				{this.props.items.map(item => 
@@ -28,6 +35,7 @@ export default class SearchList extends Component {
 				name={item.first_name + ' ' + item.last_name} 
 				state={item.state} key={item.id + item.party}
 				party={item.party}
+				collected={this.checkCollection(item)}
 				handleCollectClick={() => this.handleCollectClick(item)}
 				/>)}
 			</ul>
