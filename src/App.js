@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router, 
+  Route, 
+  Switch,
+} from 'react-router-dom'
+import PrivateRoute from './PrivateRoute.js'
+import LoginPage from './auth/LoginPage.js'
+import HomePage from './home/HomePage.js'
+import SearchPage from './search/SearchPage.js'
+import CollectionPage from './collection/CollectionPage.js'
+import Header from './common/Header.js'
+import Footer from './common/Footer.js'
+import { getToken, storeToken } from './utils/local-storage-utils.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    token: getToken()
+  }
+
+  handleUserChange = (user) => {
+    storeToken(user);
+    this.setState({token: user.token})
+  }
+
+  handleLogoutClick = e => {
+    localStorage.clear();
+    this.setState({token: ''});
+  }
+
+  render() {
+    return (
+      <Router>
+        <Header 
+        handleLogoutClick={this.handleLogoutClick}
+        />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(routerProps) => <HomePage {...routerProps} />}
+          />
+          <Route 
+            path="/login"
+            exact
+            render={(routerProps) => 
+            <LoginPage 
+            handleUserChange = {this.handleUserChange}
+            {...routerProps} />}
+          />
+          <PrivateRoute 
+            path="/search"
+            exact
+            token={this.state.token}
+            render={(routerProps) => <SearchPage {...routerProps} />}
+          />
+          <PrivateRoute 
+            path="/collection"
+            exact
+            token={this.state.token}
+            render={(routerProps) => <CollectionPage {...routerProps} />}
+          />
+        </Switch>
+        <Footer />
+      </Router>
+    )
+  }
 }
 
-export default App;

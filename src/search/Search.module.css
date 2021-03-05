@@ -1,0 +1,13 @@
+.results {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding-left: unset;
+}
+
+.searchItem {
+	width: 20%;
+	border: solid 4px indigo;
+	margin: 1rem;
+	text-align: center;
+}

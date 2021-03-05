@@ -1,0 +1,12 @@
+.navItem {
+	margin: 0 1rem;
+}
+
+.current {
+	display: none;
+}
+
+.logout {
+	cursor: pointer;
+	background-color: lightgray;
+}
