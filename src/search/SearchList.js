@@ -9,8 +9,9 @@ export default class SearchList extends Component {
 				{this.props.items.map(item => 
 				<SearchItem 
 				name={item.first_name + ' ' + item.last_name} 
-				state={item.state}key={item.id + item.party}
+				state={item.state} key={item.id + item.party}
 				party={item.party}
+				handleCollectClick={e => console.log(item)}
 				/>)}
 			</ul>
 		)
