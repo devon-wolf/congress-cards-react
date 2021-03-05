@@ -24,3 +24,10 @@ export async function getFavorites(token) {
 
 	return response.body;
 }
+
+export async function deleteFavorite(id, token) {
+	const response = await request.delete(`${URL}/my-congress/${id}`)
+		.set({Authorization: token});
+
+	return response.body
+}

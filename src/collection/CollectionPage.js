@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getFavorites } from '../search/api-search-utils'
+import { getFavorites, deleteFavorite } from '../search/api-search-utils'
 
 export default class CollectionPage extends Component {
 	state = {
@@ -11,6 +11,11 @@ export default class CollectionPage extends Component {
 		this.setState({ collection });
 	}
 
+	handleDeleteClick = async (item) => {
+		await deleteFavorite(item.id, this.props.token);
+		const collection = await getFavorites(this.props.token);
+		this.setState({ collection });
+	}
 
 	render() {
 		return (
@@ -18,7 +23,19 @@ export default class CollectionPage extends Component {
 				<h1>COLLECTION</h1>
 				<ul>
 					{this.state.collection.map(item =>
-						<li key={item.id + item.party}>{item.name}</li>
+						<>
+						<li 
+						key={item.db_id + item.party}
+						>
+							{item.name}
+						</li>
+
+						<button 
+						key={item.id + item.party}
+						onClick={() => this.handleDeleteClick(item)}
+						>Remove?
+						</button>
+						</>
 					)}
 				</ul>
 			</main>
