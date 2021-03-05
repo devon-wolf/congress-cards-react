@@ -27,7 +27,6 @@ export default class SearchList extends Component {
 	}
 
 	render() {
-		console.log(this.state.collection);
 		return (
 			<ul className={style.results}>
 				{this.props.items.map(item => 
