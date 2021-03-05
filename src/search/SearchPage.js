@@ -8,7 +8,7 @@ import style from './Search.module.css'
 export default class SearchPage extends Component {
 	state = {
 		chamber: '',
-		results: []
+		results: [],
 	}
 
 	handleSearchClick = async e => {
@@ -18,7 +18,7 @@ export default class SearchPage extends Component {
 	}
 
 	render() {
-		// console.log(this.state);
+		console.log(this.state);
 		return (
 			<main>
 				<h1>SEARCH</h1>
@@ -27,7 +27,11 @@ export default class SearchPage extends Component {
 					handleChamberChange={e => this.setState({chamber: e.target.value})}
 					handleSearchClick={this.handleSearchClick}
 				/>
-				<SearchList items={this.state.results}/>
+				
+				<SearchList
+				items={this.state.results}
+				token={this.props.token} 
+				/>
 			</main>
 		)
 	}
